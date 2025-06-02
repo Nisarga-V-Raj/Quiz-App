@@ -8,6 +8,7 @@ const Quiz = () => {
     let [question, setQuestion] = useState(data[index]);
     let [lock, setLock] = useState(false);
     let [score, setScore] = useState(0);
+    let [result, setResult] = useState(false);
 
     let Option1 = useRef(null);
     let Option2 = useRef(null);
@@ -33,6 +34,11 @@ const Quiz = () => {
 
     const next = () => {
         if (lock === true) {
+            if (index === data.length - 1) {
+                setResult(true);
+                alert(`Quiz Over! Your score is ${score} out of ${data.length}`);
+                return 0;
+            }
             setIndex(++index);
             setQuestion(data[index]);
             setLock(false);
