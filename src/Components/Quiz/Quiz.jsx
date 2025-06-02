@@ -32,7 +32,11 @@ const Quiz = () => {
     }
 
     const next = () => {
-
+        if (lock === true) {
+            setIndex(++index);
+            setQuestion(data[index]);
+            setLock(false);
+        }
     }
     return (
         <div className='container'>
@@ -46,8 +50,8 @@ const Quiz = () => {
                 <li ref={Option3} onClick={(e) => checkAns(e, 3)}>{question.option3}</li>
                 <li ref={Option4} onClick={(e) => checkAns(e, 4)}>{question.option4}</li>
             </ul>
-            <button>Next</button>
-            <div className='index'>1 of 5 questions</div>
+            <button onClick={next}>Next</button>
+            <div className='index'>{index + 1} of {data.length} questions</div>
         </div>
     )
 }
