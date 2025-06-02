@@ -36,7 +36,6 @@ const Quiz = () => {
         if (lock === true) {
             if (index === data.length - 1) {
                 setResult(true);
-                alert(`Quiz Over! Your score is ${score} out of ${data.length}`);
                 return 0;
             }
             setIndex(++index);
